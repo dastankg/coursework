@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page %}
+    <!-- {% load static %} -->
+    <!-- Start Page Banner -->
+    <div class="page-banner-area item-bg3">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Post' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Post' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Banner -->
+
+    <!-- Start Blog Details Area -->
+    <section class="blog-details-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details-desc">
+                        <div class="article-image">
+                            <img src="{{ post.img.url }}" width="1000" height="500" alt="image">
+                        </div>
+
+                        <div class="article-content">
+                            <div class="entry-meta">
+                                <ul>
+                                    <li>
+                                        <span>{% trans 'Posted On:' %}</span>
+                                        <a href="#">{{ post.posted }}</a>
+                                    </li>
+                                    <li>
+                                        <span>{% trans 'Posted By:' %}</span>
+                                        <a href="#">{% trans 'Admin' %}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h3>{{ post.title }}</h3>
+                            <div>
+                                {{ post.posts_text }}
+                            </div>
+
+                        </div>
+
+                        <div class="article-footer">
+
+                            <div class="article-share">
+                                <ul class="social">
+                                    <li><span>{% trans 'Share:' %}</span></li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="post-navigation">
+                            <div class="navigation-links">
+                                <div class="nav-previous">
+                                    <a href="{% url 'post' post.id|add:-1 %}">
+                                        <i class="flaticon-left-arrow"></i>
+                                        {% trans 'Prev Post' %}
+                                    </a>
+                                </div>
+                                <div class="nav-next">
+                                    <a href="{% url 'post' post.id|add:+1 %}">
+                                        {% trans 'Next Post' %}
+                                        <i class="flaticon-right-arrow"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comments-area">
+                            <h3 class="comments-title">{{ comments|length }} {% trans 'Comments:' %}</h3>
+
+                            {% for comment in comments %}
+                                <ol class="comment-list">
+                                    <li class="comment">
+                                        <article class="comment-body">
+                                            <footer class="comment-meta">
+                                                <div class="comment-author vcard">
+                                                    <img src="{% static 'img/client/client-1.jpg' %}" class="avatar"
+                                                         alt="image">
+                                                    <b class="fn">{{ comment.author }}</b>
+                                                </div>
+                                                <div class="comment-metadata">
+                                                    <a href="#">
+                                                        <time>{{ comment.data }}</time>
+                                                    </a>
+                                                </div>
+                                            </footer>
+                                            <div class="comment-content">
+                                                <p>{{ comment.comment }}</p>
+                                            </div>
+                                        </article>
+
+                                    </li>
+                                </ol>
+                            {% endfor %}
+
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">{% trans 'Leave a Reply' %}</h3>
+
+                                <form class="comment-form" action="{% url 'post' post.id %}" method="post">
+                                    {% csrf_token %}
+                                    <p class="comment-notes">
+                                        <span id="email-notes">{% trans 'Your email address will not be published.' %}</span>
+                                        {% trans 'Required fields are marked ' %}
+                                        <span class="required">*</span>
+                                    </p>
+                                    <p class="comment-form-author">
+                                        <label>{% trans 'Name' %}<span class="required">*</span></label>
+
+                                        <input type="text" id="author" placeholder="{% trans 'Your Name*' %}"
+                                               name="author" required="required">
+                                    </p>
+                                    <p class="comment-form-email">
+                                        <label>{% trans 'Email' %} <span class="required">*</span></label>
+                                        <input type="email" id="email" placeholder="{% trans 'Your Email*' %}"
+                                               name="email" required="required">
+                                    </p>
+                                    <p class="comment-form-comment">
+                                        <label>{% trans 'Comment' %}</label>
+                                        <textarea name="comment" id="comment" cols="45"
+                                                  placeholder="{% trans 'Your Comment...' %}" rows="5" maxlength="65525"
+                                                  required="required"></textarea>
+                                    </p>
+
+                                    <p class="form-submit">
+                                        <input type="submit" name="submit" id="submit" class="submit"
+                                               value="Post A Comment">
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area">
+                        <section class="widget widget_search">
+                            <h3 class="widget-title">{% trans 'Search' %}</h3>
+
+                            <form class="search-form" action="{% url 'search_blog' %}" method="post">
+                                {% csrf_token %}
+                                <label>
+                                    <span class="screen-reader-text">{% trans 'Search for' %}:</span>
+                                    <input type="search" class="search-field" placeholder="{% trans 'Search...' %}"
+                                           name="search">
+                                </label>
+                                <button type="submit">
+                                    <i class="flaticon-search"></i>
+                                </button>
+                            </form>
+                        </section>
+
+                        <section class="widget widget_orgo_posts_thumb">
+                            <h3 class="widget-title">{% trans 'Popular Posts' %}</h3>
+                            {% for pop_post in pop_posts %}
+                                <article class="item">
+                                    <a href="{% url 'post' pop_post.id %}" class="thumb">
+                                        <span class="fullimage cover bg1" role="img"><img src="{{ pop_post.img.url }}"
+                                                                                          alt="image" height="110"
+                                                                                          width="110"></span>
+                                    </a>
+                                    <div class="info">
+                                        <span>{{ pop_post.posted }}</span>
+                                        <h4 class="title usmall"><a href="#">{{ pop_post.title }}</a></h4>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </section>
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

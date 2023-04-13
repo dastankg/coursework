@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block page %}
+
+    <div class="page-banner-area item-bg4">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Product' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Product' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="product-details-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="product-details-image">
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.img.url }}" alt="image"
+                                                                              height="650" width="650"></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="product-details-desc">
+                                <h3>{{ product.title }}</h3>
+                                <div class="price">
+                                    <span class="new-price">${{ product.new_price }}</span>
+                                    <span class="old-price">${{ product.old_price }}</span>
+                                </div>
+                                <div class="product-review">
+
+                                    <a href="#" class="rating-count">{{ comments|length }} {% trans 'reviews' %}</a>
+                                </div>
+                                <p>{{ product.title }}</p>
+                                <div class="product-add-to-cart">
+                                    <form action="{% url 'cart_add' product.id %}" method="post">
+                                        {% csrf_token %}
+
+                                        <button type="submit" class="default-btn">
+                                            {% trans 'Add to cart' %}
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="products-share">
+                                    <ul class="social">
+                                        <li><span>{% trans 'Share:' %}</span></li>
+                                        <li>
+                                            <a href="#" class="facebook" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="twitter" target="_blank"><i
+                                                    class='bx bxl-twitter'></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="linkedin" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="instagram" target="_blank"><i
+                                                    class='bx bxl-instagram'></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab products-details-tab">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <ul class="tabs">
+                                    <li>
+                                        <a href="#">
+                                            <div class="dot"></div>
+                                            {% trans 'Description' %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="dot"></div>
+                                            {% trans 'Reviews' %}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="tab_content">
+                                    <div class="tabs_item">
+                                        <div class="products-details-tab-content">
+                                            <p>{{ product.content }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tabs_item">
+                                        <div class="products-details-tab-content">
+                                            <div class="product-review-form">
+                                                <h3>{% trans 'Customer Reviews' %}</h3>
+                                                <div class="review-title">
+
+                                                    <p>{% trans 'Based on' %} {{ comments|length }} {% trans 'reviews' %}</p>
+                                                    <a href="#" class="default-btn">
+                                                        {% trans 'Write a Review' %}
+                                                    </a>
+                                                </div>
+                                                <div class="review-comments">
+                                                    {% for comment in comments %}
+                                                        <div class="review-item">
+                                                            <h3>{{ comment.title }}</h3>
+                                                            <span><strong>{{ comment.author }}</strong> on <strong>{{ comment.data }}</strong></span>
+                                                            <p>{{ comment.comment }}</p>
+                                                            <a href="#"
+                                                               class="review-report-link">{% trans 'Report as Inappropriate' %}</a>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="review-form">
+                                                    <h3>{% trans 'Write a Review' %}</h3>
+                                                    <form class="comment-form" action="{% url 'product' product.id %}"
+                                                          method="post">
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6">
+                                                                <div class="form-group">
+                                                                    <input type="text" id="name" name="name"
+                                                                           placeholder="{% trans 'Enter your name' %}"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6">
+                                                                <div class="form-group">
+                                                                    <input type="email" id="email" name="email"
+                                                                           placeholder="{% trans 'Enter your email' %}"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" id="review-title"
+                                                                           name="review-title"
+                                                                           placeholder="{% trans 'Enter your review a title' %}"
+                                                                           class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <textarea name="review-body" id="review-body"
+                                                                              cols="30" rows="7"
+                                                                              placeholder="{% trans 'Write your comments here' %}"
+                                                                              class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <button type="submit" class="default-btn">
+                                                                    {% trans 'Submit Review' %}
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="related-shop">
+                        <h4>{% trans 'Related Products' %}</h4>
+                        <div class="row">
+                            {% for related_product in related_products %}
+                                <div class="col-lg-6 col-md-6">
+
+                                    <div class="top-products-item">
+                                        <div class="products-image">
+                                            <a href="{{ related_product.get_absolute_url }}"><img
+                                                    src="{{ related_product.img.url }}" alt="image" height="650"
+                                                    width="650"></a>
+
+                                            <ul class="products-action">
+                                                <form action="{% url 'cart_add' related_product.id %}" method="post"
+                                                      id="related-{{ related_product.id }}">
+                                                    {% csrf_token %}
+                                                </form>
+                                                <li>
+                                                    <a href="#"
+                                                       onclick="document.getElementById('related-{{ related_product.id }}').submit(); return false;"
+                                                       data-tooltip="tooltip" data-placement="top"
+                                                       title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
+                                                </li>
+
+                                            </ul>
+
+                                            <div class="sale">
+                                                <span>{% trans 'Sale' %}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="products-content">
+                                            <h3>
+                                                <a href="{{ related_product.get_absolute_url }}">{{ related_product.title }}</a>
+                                            </h3>
+                                            <div class="price">
+                                                <span class="new-price">${{ related_product.new_price }}</span>
+                                                <span class="old-price">${{ related_product.old_price }}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area">
+                        <section class="widget widget_search">
+                            <h3 class="widget-title">{% trans 'Search' %}</h3>
+
+                            <form class="search-form" method="post" action="{% url 'search_shop' %}">
+                                {% csrf_token %}
+                                <label>
+                                    <span class="screen-reader-text">{% trans 'Search for:' %}</span>
+                                    <input type="search" class="search-field" placeholder="{% trans 'Search...' %}"
+                                           name="search">
+                                </label>
+                                <button type="submit">
+                                    <i class="flaticon-search"></i>
+                                </button>
+                            </form>
+                        </section>
+
+
+                        <section class="widget widget_popular_products">
+                            <h3 class="widget-title">{% trans 'Popular Products' %}</h3>
+                            {% for popular_product in popular_products %}
+                                <article class="item">
+                                    <a href="{{ popular_product.get_absolute_url }}" class="thumb">
+                                        <span class="fullimage cover bg1" role="img"><img
+                                                src="{{ popular_product.img.url }}" alt="image" height="110"
+                                                width="110"></span>
+                                    </a>
+                                    <div class="info">
+                                        <span>${{ popular_product.new_price }}</span>
+                                        <h4 class="title usmall"><a href="#">{{ popular_product.title }}</a></h4>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </section>
+
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products-area pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Featured  Products' %}</h2>
+                <p>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua quis ipsum suspendisse</p>
+            </div>
+
+            <div class="row">
+                {% for feature_product in feature_products %}
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="featured-products-item">
+                            <div class="products-image">
+                                <a href="{{ feature_product.get_absolute_url }}"><img
+                                        src="{{ feature_product.img.url }}" alt="image" height="550" width="550"></a>
+
+                                <ul class="products-action">
+                                    <form action="{% url 'cart_add' feature_product.id %}" method="post"
+                                          id="feature-{{ feature_product.id }}">
+                                        {% csrf_token %}
+                                    </form>
+                                    <li>
+                                        <a href="#"
+                                           onclick="document.getElementById('feature-{{ feature_product.id }}').submit(); return false;"
+                                           data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                class="flaticon-shopping-cart"></i></a>
+                                    </li>
+
+                                </ul>
+
+                                <div class="new">
+                                    <span>{% trans 'New' %}</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="{{ feature_product.get_absolute_url }}">{{ feature_product.title }}</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">${{ feature_product.new_price }}</span>
+                                    <span class="old-price">${{ feature_product.old_price }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+

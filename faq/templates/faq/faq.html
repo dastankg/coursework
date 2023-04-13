@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page %}
+    <div class="page-banner-area item-bg3">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>FAQ</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>FAQ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="faq-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Asked Questions' %}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <ul class="accordion">
+                    {% for faq in faqs %}
+                        <li class="accordion-item">
+                            <a class="accordion-title" href="javascript:void(0)">
+                                <i class='bx bx-plus'></i>
+                                {{ faq.title }}
+                            </a>
+
+                            <p class="accordion-content">
+                                {{ faq.description }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="faq-contact-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Do You Have Any Questions?' %}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+
+            <div class="faq-contact-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div id="contactForm">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.name }}
+                                    <div class="help-block with-errors">{{ form.name.errors }}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.email }}
+                                    <div class="help-block with-errors">{{ form.email.errors }}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.phone }}
+                                    <div class="help-block with-errors">{{ form.number.errors }}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.title }}
+                                    <div class="help-block with-errors">{{ form.title.errors }}</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    {{ form.message }}
+                                    <div class="help-block with-errors">{{ form.message.errors }}</div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="send-btn">
+                                    <button type="submit" class="default-btn">
+                                        {% trans 'Send Message' %}
+                                    </button>
+
+                                </div>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

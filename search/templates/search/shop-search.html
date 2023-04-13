@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block page %}
+    {% load i18n %}
+    <div class="page-banner-area">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Shop' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Shop' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="top-products-area pt-100 pb-100">
+        <div class="container">
+            <div class="orgo-grid-sorting row align-items-center">
+                <div class="col-lg-6 col-md-6 result-count">
+                    <p>{% trans 'We found' %} <span class="count">10</span> {% trans 'products available for you' %}</p>
+                </div>
+
+                <div class="col-lg-6 col-md-6 ordering">
+
+                    <form action="{% url 'shop' %}" method="get" id="sortProduct" class="orderby">
+
+                        <div class="box sort pull-right">
+                            <span>{% trans 'Sort By:' %}</span>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% trans 'Default' %}
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                                <li class="dropdown-item"><input type="submit" name="orderby"
+                                                                 value="{% trans 'Default' %}"></li>
+                                <li class="dropdown-item"><input type="submit" name="orderby"
+                                                                 value="{% trans 'Popularity' %}"></li>
+                                <li class="dropdown-item"><input type="submit" name="orderby"
+                                                                 value="{% trans 'Price: low to high' %}"></li>
+                                <li class="dropdown-item"><input type="submit" name="orderby"
+                                                                 value="{% trans 'Price: high to low' %}"></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% for product in products %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ product.img.url }}" alt="image"
+                                                                              height="650" width="650"></a>
+
+                                <ul class="products-action">
+
+                                    <form action="{% url 'cart_add' product.id %}" method="post"
+                                          id="product-{{ product.id }}">
+                                        {% csrf_token %}
+                                    </form>
+                                    <li>
+                                        <a href="#"
+                                           onclick="document.getElementById('product-{{ product.id }}').submit(); return false;"
+                                           data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                class="flaticon-shopping-cart"></i></a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View"
+                                           data-toggle="modal" data-target="#productsQuickView">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="sale">
+                                    <span>{% trans 'Sale' %}</span>
+                                </div>
+                            </div>
+                            <div class="products-content">
+                                <h3>
+                                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">${{ product.new_price }}</span>
+                                    <span class="old-price">${{ product.old_price }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="pagination-area">
+                        {% if products.has_previous %}
+                            <a href="?page={{ products.previous_page_number }}" class="prev page-numbers">
+                                <i class="flaticon-left-arrow"></i>
+                            </a>
+                        {% endif %}
+                        {% for i in products.paginator.page_range %}
+                            {% if i > products.number|add:-3 and i < products.number|add:3 %}
+                                {% if products.number == i %}
+                                    <span class="page-numbers current" aria-current="page">{{ products.number }}</span>
+                                {% else %}
+                                    <a href="?page={{ i }}" class="page-numbers">{{ i }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if products.has_next %}
+                            <a href="?page={{ products.next_page_number }}" class="next page-numbers">
+                                <i class="flaticon-right-arrow"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+        
+
+
+

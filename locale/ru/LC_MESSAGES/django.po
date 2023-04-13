@@ -1,0 +1,486 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-16 22:38+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\blog\templates\blog\blog-details.html:11
+#: .\blog\templates\blog\blog-details.html:16
+msgid "Post"
+msgstr "Пост"
+
+#: .\blog\templates\blog\blog-details.html:14
+#: .\blog\templates\blog\blog.html:12 .\cart\templates\cart\detail.html:16
+#: .\checkout\templates\checkout.html:13
+#: .\contact\templates\contact\contact.html:13 .\faq\templates\faq\faq.html:12
+#: .\search\templates\search\blog-search.html:12
+#: .\search\templates\search\shop-search.html:12
+#: .\shop\templates\shop\shop-details.html:15
+#: .\shop\templates\shop\shop.html:12 .\templates\base.html:117
+msgid "Home"
+msgstr "Домой"
+
+#: .\blog\templates\blog\blog-details.html:39
+msgid "Posted On:"
+msgstr "Опубликовано на:"
+
+#: .\blog\templates\blog\blog-details.html:43
+msgid "Posted By:"
+msgstr "Опубликовано:"
+
+#: .\blog\templates\blog\blog-details.html:44
+msgid "Admin"
+msgstr "Админ"
+
+#: .\blog\templates\blog\blog-details.html:60
+#: .\shop\templates\shop\shop-details.html:87
+msgid "Share:"
+msgstr "Поделиться:"
+
+#: .\blog\templates\blog\blog-details.html:85
+msgid "Prev Post"
+msgstr "Предедущий пост"
+
+#: .\blog\templates\blog\blog-details.html:90
+msgid "Next Post"
+msgstr "Следующий пост"
+
+#: .\blog\templates\blog\blog-details.html:98
+msgid "Comments:"
+msgstr "Комментарии"
+
+#: .\blog\templates\blog\blog-details.html:125
+msgid "Leave a Reply"
+msgstr "Оставить ответ"
+
+#: .\blog\templates\blog\blog-details.html:130
+msgid "Your email address will not be published."
+msgstr "Ваш адрес электронной почты не будет опубликован."
+
+#: .\blog\templates\blog\blog-details.html:131
+msgid "Required fields are marked "
+msgstr "Обязательные поля отмечены"
+
+#: .\blog\templates\blog\blog-details.html:135
+#: .\cart\templates\cart\detail.html:36
+msgid "Name"
+msgstr "Имя"
+
+#: .\blog\templates\blog\blog-details.html:137
+msgid "Your Name*"
+msgstr "Фамилия"
+
+#: .\blog\templates\blog\blog-details.html:140 .\templates\base.html:389
+msgid "Email"
+msgstr "Электронная почта"
+
+#: .\blog\templates\blog\blog-details.html:141
+msgid "Your Email*"
+msgstr "Твоя электронная почта"
+
+#: .\blog\templates\blog\blog-details.html:144
+msgid "Comment"
+msgstr "Комментарии"
+
+#: .\blog\templates\blog\blog-details.html:145
+msgid "Your Comment..."
+msgstr "Твой комментарии..."
+
+#: .\blog\templates\blog\blog-details.html:160
+#: .\shop\templates\shop\shop-details.html:240 .\templates\base.html:175
+#: .\templates\base.html:227
+msgid "Search"
+msgstr "Поиск"
+
+#: .\blog\templates\blog\blog-details.html:165
+msgid "Search for"
+msgstr "Искать"
+
+#: .\blog\templates\blog\blog-details.html:166
+#: .\shop\templates\shop\shop-details.html:246
+msgid "Search..."
+msgstr "Поиск..."
+
+#: .\blog\templates\blog\blog-details.html:175
+msgid "Popular Posts"
+msgstr "Популярные посты"
+
+#: .\blog\templates\blog\blog.html:9 .\blog\templates\blog\blog.html:14
+#: .\search\templates\search\blog-search.html:9
+#: .\search\templates\search\blog-search.html:14 .\templates\base.html:130
+#: .\templates\base.html:365
+msgid "Blog"
+msgstr "Блог"
+
+#: .\blog\templates\blog\blog.html:41 .\core\templates\core\index.html:180
+#: .\search\templates\search\blog-search.html:41
+msgid "Read More +"
+msgstr "Читать далее +"
+
+#: .\cart\templates\cart\detail.html:13 .\cart\templates\cart\detail.html:18
+msgid "Cart"
+msgstr "Корзина"
+
+#: .\cart\templates\cart\detail.html:35
+#: .\shop\templates\shop\shop-details.html:12
+#: .\shop\templates\shop\shop-details.html:17
+msgid "Product"
+msgstr "Продукт"
+
+#: .\cart\templates\cart\detail.html:37
+msgid "Unit Price"
+msgstr "Цена за единицу"
+
+#: .\cart\templates\cart\detail.html:38
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\cart\templates\cart\detail.html:39 .\cart\templates\cart\detail.html:95
+#: .\checkout\templates\checkout.html:75
+msgid "Total"
+msgstr "Итого"
+
+#: .\cart\templates\cart\detail.html:86
+msgid "Back to Shop"
+msgstr "Вернуться в магазин"
+
+#: .\cart\templates\cart\detail.html:93
+msgid "Cart Totals"
+msgstr "Итого в корзине"
+
+#: .\cart\templates\cart\detail.html:100
+msgid "Proceed to Checkout"
+msgstr "Перейдите к оформлению заказа"
+
+#: .\checkout\templates\checkout.html:10 .\checkout\templates\checkout.html:15
+msgid "Checkout"
+msgstr "Проверка"
+
+#: .\checkout\templates\checkout.html:32
+msgid "Billing Details"
+msgstr "Платежные реквизиты"
+
+#: .\checkout\templates\checkout.html:36
+msgid "First Name"
+msgstr "Имя"
+
+#: .\checkout\templates\checkout.html:42
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\checkout\templates\checkout.html:48 .\templates\base.html:394
+msgid "Address"
+msgstr "Адрес"
+
+#: .\checkout\templates\checkout.html:54 .\templates\base.html:384
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\checkout\templates\checkout.html:60
+msgid "Order Notes"
+msgstr "Примечания к заказу"
+
+#: .\checkout\templates\checkout.html:69
+msgid "Your Order"
+msgstr "Ваш заказ"
+
+#: .\checkout\templates\checkout.html:74
+msgid "Product Name"
+msgstr "Название продукта"
+
+#: .\checkout\templates\checkout.html:91
+msgid "Order Total"
+msgstr "Общее количество заказов"
+
+#: .\checkout\templates\checkout.html:106
+msgid "Card pay"
+msgstr "Оплата картой"
+
+#: .\checkout\templates\checkout.html:110
+msgid "Cash on Delivery"
+msgstr "Наложенный платеж при доставке"
+
+#: .\checkout\templates\checkout.html:115
+msgid "Place Order"
+msgstr "Разместить заказ"
+
+#: .\contact\templates\contact\contact.html:10
+#: .\contact\templates\contact\contact.html:15 .\templates\base.html:136
+#: .\templates\base.html:371
+msgid "Contact"
+msgstr "Контакты"
+
+#: .\contact\templates\contact\contact.html:33
+msgid "Email Here"
+msgstr "Писать сюда"
+
+#: .\contact\templates\contact\contact.html:46
+msgid "Location Here"
+msgstr "Расположение здесь"
+
+#: .\contact\templates\contact\contact.html:47
+msgid "2750 Quadra Street Victoria Road, New York, Canada"
+msgstr "2750 Квадра Стрит Виктория Роуд, Нью-Йорк, Канада"
+
+#: .\contact\templates\contact\contact.html:57
+msgid "Call Here"
+msgstr "Звонить сюда"
+
+#: .\contact\templates\contact\contact.html:77
+msgid "Ready To Get Started?"
+msgstr "Готовы приступить к работе?"
+
+#: .\contact\templates\contact\contact.html:136 .\faq\templates\faq\faq.html:99
+msgid "Send Message"
+msgstr "Отправить письмо"
+
+#: .\contact\templates\contact\contact.html:153
+#: .\core\templates\core\index.html:196
+msgid "Subscribe To Our Newsletter"
+msgstr "Подпишитесь на нашу рассылку новостей"
+
+#: .\contact\templates\contact\contact.html:161
+#: .\core\templates\core\index.html:204
+msgid "Enter Email Address"
+msgstr "Введите адрес электронной почты"
+
+#: .\contact\templates\contact\contact.html:162
+#: .\core\templates\core\index.html:205
+msgid "Subscribe Now"
+msgstr "Подпишитесь сейчас"
+
+#: .\core\templates\core\index.html:10
+msgid "Take Natural Taste From Our Shop"
+msgstr "Возьмите натуральный вкус из нашего магазина"
+
+#: .\core\templates\core\index.html:11
+msgid "Organic Food Is Good For Health"
+msgstr "Органическая пища полезна для здоровья"
+
+#: .\core\templates\core\index.html:14
+msgid "Our Shop"
+msgstr "Наш магазин"
+
+#: .\core\templates\core\index.html:15
+msgid "Add to Cart"
+msgstr "Добавить в корзину"
+
+#: .\core\templates\core\index.html:26
+msgid "Trending Products"
+msgstr "Трендовые продукты"
+
+#: .\core\templates\core\index.html:48 .\core\templates\core\index.html:140
+#: .\search\templates\search\shop-search.html:74
+#: .\shop\templates\shop\shop.html:68
+msgid "Sale"
+msgstr "Распродажа"
+
+#: .\core\templates\core\index.html:72
+#: .\shop\templates\shop\shop-details.html:281
+msgid "Featured  Products"
+msgstr "Рекомендуемые продукты"
+
+#: .\core\templates\core\index.html:94
+#: .\shop\templates\shop\shop-details.html:304
+msgid "New"
+msgstr "Новинка"
+
+#: .\core\templates\core\index.html:119
+msgid "Best Sellers Products"
+msgstr "Товары бестселлеров"
+
+#: .\core\templates\core\index.html:162
+msgid "Latest Blog"
+msgstr "Последний блог"
+
+#: .\faq\templates\faq\faq.html:25
+msgid "Asked Questions"
+msgstr "Задаваемые вопросы"
+
+#: .\faq\templates\faq\faq.html:51
+msgid "Do You Have Any Questions?"
+msgstr "У вас есть какие-нибудь вопросы?"
+
+#: .\search\templates\search\shop-search.html:9
+#: .\search\templates\search\shop-search.html:14
+#: .\shop\templates\shop\shop.html:9 .\shop\templates\shop\shop.html:14
+#: .\templates\base.html:124 .\templates\base.html:362
+msgid "Shop"
+msgstr "Магазин"
+
+#: .\search\templates\search\shop-search.html:26
+#: .\shop\templates\shop\shop.html:26
+msgid "We found"
+msgstr "Мы нашли"
+
+#: .\search\templates\search\shop-search.html:26
+#: .\shop\templates\shop\shop.html:26
+msgid "products available for you"
+msgstr "продукты, доступные для вас"
+
+#: .\search\templates\search\shop-search.html:34
+msgid "Sort By:"
+msgstr "Сортировать по:"
+
+#: .\search\templates\search\shop-search.html:36
+#: .\shop\templates\shop\shop.html:36 .\shop\templates\shop\shop.html:39
+msgid "Default"
+msgstr "По умолчанию"
+
+#: .\search\templates\search\shop-search.html:40
+#: .\shop\templates\shop\shop.html:40
+msgid "Popularity"
+msgstr "Популярные"
+
+#: .\search\templates\search\shop-search.html:41
+#: .\shop\templates\shop\shop.html:41
+msgid "Price: low to high"
+msgstr "Цена: от низкой до высокой"
+
+#: .\search\templates\search\shop-search.html:42
+#: .\shop\templates\shop\shop.html:42
+msgid "Price: high to low"
+msgstr "Цена: от высокой до низкой"
+
+#: .\shop\templates\shop\shop-details.html:45
+#: .\shop\templates\shop\shop-details.html:138
+msgid "reviews"
+msgstr "отзывы"
+
+#: .\shop\templates\shop\shop-details.html:63
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: .\shop\templates\shop\shop-details.html:77
+msgid "I agree with the terms and conditions"
+msgstr "Я согласен с условиями и положениями"
+
+#: .\shop\templates\shop\shop-details.html:81
+msgid "Buy it now!"
+msgstr "Купите прямо сейчас!"
+
+#: .\shop\templates\shop\shop-details.html:113
+msgid "Description"
+msgstr "Описание"
+
+#: .\shop\templates\shop\shop-details.html:119
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: .\shop\templates\shop\shop-details.html:135
+msgid "Customer Reviews"
+msgstr "Отзывы клиентов"
+
+#: .\shop\templates\shop\shop-details.html:138
+msgid "Based on"
+msgstr "Основанный на"
+
+#: .\shop\templates\shop\shop-details.html:140
+#: .\shop\templates\shop\shop-details.html:154
+msgid "Write a Review"
+msgstr "Написать отзыв"
+
+#: .\shop\templates\shop\shop-details.html:149
+msgid "Report as Inappropriate"
+msgstr "Сообщить как неуместный"
+
+#: .\shop\templates\shop\shop-details.html:160
+msgid "Enter your name"
+msgstr "Введите свое имя"
+
+#: .\shop\templates\shop\shop-details.html:165
+msgid "Enter your email"
+msgstr "Введите свой адрес электронной почты"
+
+#: .\shop\templates\shop\shop-details.html:170
+msgid "Enter your review a title"
+msgstr "Введите название вашего отзыва"
+
+#: .\shop\templates\shop\shop-details.html:175
+msgid "Write your comments here"
+msgstr "Пишите свои комментарии здесь"
+
+#: .\shop\templates\shop\shop-details.html:180
+msgid "Submit Review"
+msgstr "Отправить отзыв"
+
+#: .\shop\templates\shop\shop-details.html:195
+msgid "Related Products"
+msgstr "Сопутствующие товары"
+
+#: .\shop\templates\shop\shop-details.html:245
+msgid "Search for:"
+msgstr "Искать:"
+
+#: .\shop\templates\shop\shop-details.html:257
+msgid "Popular Products"
+msgstr "Популярные продукты"
+
+#: .\shop\templates\shop\shop.html:34
+msgid "Sort By"
+msgstr "Сортировать по"
+
+#: .\templates\base.html:34
+msgid "Orgo - Organic Fruit & Food Shop HTML Template"
+msgstr "Orgo - HTML-шаблон магазина органических фруктов и продуктов питания"
+
+#: .\templates\base.html:56
+msgid "175 5th Ave Premium Area, New York"
+msgstr "175 Премиальный район на 5-й авеню, Нью-Йорк"
+
+#: .\templates\base.html:157
+msgid "Go"
+msgstr "Вперед"
+
+#: .\templates\base.html:250
+msgid "About Us"
+msgstr "О нас"
+
+#: .\templates\base.html:251
+msgid "We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration."
+
+msgstr "Мы считаем, что взаимодействие с брендом играет ключевую роль в коммуникации. Настоящие инновации и позитивный клиентский опыт являются основой успешного общения. Никаких поддельных товаров и услуг. Клиент - это король, его жизнь и потребности - это источник вдохновения."
+
+#: .\templates\base.html:358
+msgid "Quick Links"
+msgstr "Быстрые ссылки"
+
+#: .\templates\base.html:368
+msgid "Faq"
+msgstr ""
+
+#: .\templates\base.html:379
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+#: .\templates\base.html:395
+msgid "175 5th Ave Premium Area, New York, NY 10010, United States"
+msgstr "175 Премиальный район на 5-й авеню, Нью-Йорк, NY 10010, Соединенные Штаты"
+
+#: .\templates\base.html:411
+msgid "Copyright @2020 Orgo. All Rights Reserved by"
+msgstr "Авторское право @2020 Orgo. Все права защищены"
+
+#: .\templates\base.html:421
+msgid "Terms & Conditions"
+msgstr "Правила и Условия"
+
+#: .\templates\base.html:424
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"

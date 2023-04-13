@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page %}
+
+    <div class="page-banner-area item-bg3">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Checkout' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Checkout' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Banner -->
+
+    <!-- Start Checkout Area -->
+    <section class="checkout-area ptb-100">
+        <div class="container">
+            <form action="{% url 'checkout' %}" method="post" id="order">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="billing-details">
+                            <h3 class="title">{% trans 'Billing Details' %}</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>{% trans 'First Name' %} <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="first">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>{% trans 'Last Name' %} <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="last">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>{% trans 'Address' %} <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>{% trans 'Phone' %} <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="notes" id="notes" cols="30" rows="5"
+                                                  placeholder="{% trans 'Order Notes' %}"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="order-details">
+                            <h3 class="title">{% trans 'Your Order' %}</h3>
+                            <div class="order-table table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">{% trans 'Product Name' %}</th>
+                                        <th scope="col">{% trans 'Total' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
+                                        <tr>
+                                            <td class="product-name">
+                                                <a href="{{ item.get_absolute_url }}">{{ item.product.title }}</a>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="subtotal-amount">${{ item.total_price }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td class="total-price">
+                                            <span>{% trans 'Order Total' %}</span>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="subtotal-amount">${{ cart.get_total_price }}</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="payment-box">
+                                <div class="payment-method">
+
+                                    <p>
+                                        <input value="card" type="radio" id="card" name="radio-group" checked>
+                                        <label for="paypal">{% trans 'Card pay' %}</label>
+                                    </p>
+                                    <p>
+                                        <input value="cash" type="radio" id="cash-on-delivery" name="radio-group">
+                                        <label for="cash-on-delivery">{% trans 'Cash on Delivery' %}</label>
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <button id="orderbutton" class="btn btn-light">Оплатить</button>
+        </div>
+    </section>
+
+
+
+    <script type="text/javascript">
+        const csrftoken = document.querySelectorAll('[name=csrfmiddlewaretoken]')[0].value;
+
+
+        var stripe = Stripe("pk_test_51JWQaxEklpPfluaovdLZ0VQqdPSLKngDB5bcAAj4qiJjk5qfEinHTjs1bGvaRfOvumshLJS68qnGxFIdlZjPwUDM005n752ZT2");
+        var checkoutButton = document.getElementById("orderbutton");
+        checkoutButton.addEventListener("click", function () {
+            fetch("{% url 'create-checkout-session' %}", {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': csrftoken
+                }
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({sessionId: session.id});
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+{% endblock %}

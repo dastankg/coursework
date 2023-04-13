@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page %}
+    <div class="page-banner-area">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Blog' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Blog' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Banner -->
+
+    <!-- Start Blog Area -->
+    <section class="blog-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-blog-item">
+                            <div class="image">
+                                <a href="{% url 'post' post.id %}"><img src="{{ post.img.url }} " alt="image"></a>
+
+                                <div class="date">
+                                    <span>{{ post.posted }}</span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="{% url 'post' post.id %}">{{ post.title }}</a>
+                                </h3>
+                                <a href="{% url 'post' post.id %}" class="blog-btn">{% trans 'Read More +' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="pagination-area">
+                        {% if posts.has_previous %}
+                            <a href="?page={{ posts.previous_page_number }}" class="prev page-numbers">
+                                <i class="flaticon-left-arrow"></i>
+                            </a>
+                        {% endif %}
+                        {% for i in posts.paginator.page_range %}
+                            {% if i > posts.number|add:-3 and i < posts.number|add:3 %}
+                                {% if posts.number == i %}
+                                    <span class="page-numbers current" aria-current="page">{{ posts.number }}</span>
+                                {% else %}
+                                    <a href="?page={{ i }}" class="page-numbers">{{ i }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if posts.has_next %}
+                            <a href="?page={{ posts.next_page_number }}" class="next page-numbers">
+                                <i class="flaticon-right-arrow"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+    Your Cart
+{% endblock %}
+{% block page %}
+    <div class="page-banner-area item-bg2">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>{% trans 'Cart' %}</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'homepage' %}">{% trans 'Home' %}</a>
+                            </li>
+                            <li>{% trans 'Cart' %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="cart-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <form>
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">{% trans 'Product' %}</th>
+                                    <th scope="col">{% trans 'Name' %}</th>
+                                    <th scope="col">{% trans 'Unit Price' %}</th>
+                                    <th scope="col">{% trans 'Quantity' %}</th>
+                                    <th scope="col">{% trans 'Total' %}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in cart %}
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#">
+                                                <img src="{{ item.product.img.url }}" width="80" height="80" alt="item">
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="{{ item.get_absolute_url }}">{{ item.product.title }}</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="unit-amount">${{ item.price }}</span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <div class="input-counter">
+                                                <a href="{% url 'cart_update' item.product.id '0' %}">
+                                                <span class="minus-btn">
+                                                    <i class='bx bx-minus'></i>
+                                                </span>
+                                                </a>
+                                                <input type="text" value="{{ item.quantity }}">
+                                                <a href="{% url 'cart_update' item.product.id '1' %}">
+                                                <span class="plus-btn">
+                                                    <i class='bx bx-plus'></i>
+                                                </span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="subtotal-amount">${{ item.total_price }}</span>
+                                            <a href="{% url 'cart_remove' item.product.id %}" class="remove">
+                                                <i class='bx bx-trash'></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cart-buttons">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 col-sm-7 col-md-7">
+                                    <a href="{% url 'shop' %}" class="default-btn">
+                                        {% trans 'Back to Shop' %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cart-totals">
+                            <h3>{% trans 'Cart Totals' %}</h3>
+                            <ul>
+                                <li>{% trans 'Total' %}
+                                    <span><b>${{ cart.get_total_price }}</b></span>
+                                </li>
+                            </ul>
+                            <a href="{% url 'checkout' %}" class="default-btn">
+                                {% trans 'Proceed to Checkout' %}
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

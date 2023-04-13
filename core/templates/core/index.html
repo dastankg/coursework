@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page %}
+    <div class="main-banner">
+        <div class="main-banner-item">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="main-banner-content">
+                            <span>{% trans 'Take Natural Taste From Our Shop' %}</span>
+                            <h1>{% trans 'Organic Food Is Good For Health' %}</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+                            <div class="banner-btn">
+                                <a href="{% url 'shop' %}" class="default-btn">{% trans 'Our Shop' %}</a>
+                                <a href="{% url 'cart-detail' %}" class="optional-btn">{% trans 'Add to Cart' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="top-products-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Trending Products' %}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua quis ipsum suspendisse</p>
+            </div>
+
+            <div class="row">
+                {% for t_p in trending_products %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="top-products-item">
+                            <div class="products-image">
+                                <a href="{{ t_p.get_absolute_url }}"><img src="{{ t_p.img.url }}" alt="image"
+                                                                          height="650" width="650"></a>
+
+                                <ul class="products-action">
+                                    <form action="{% url 'cart_add' t_p.id %}" method="post" id="trend-{{ t_p.id }}">
+                                        {% csrf_token %}
+                                    </form>
+                                    <li>
+                                        <a href="#"
+                                           onclick="document.getElementById('trend-{{ t_p.id }}').submit(); return false;"
+                                           data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                class="flaticon-shopping-cart"></i></a>
+                                    </li>
+
+                                </ul>
+
+                                <div class="sale">
+                                    <span>{% trans 'Sale' %}</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="{{ t_p.get_absolute_url }}">{{ t_p.title }}</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">${{ t_p.new_price }}</span>
+                                    <span class="old-price">${{ t_p.old_price }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Featured  Products' %}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua quis ipsum suspendisse</p>
+            </div>
+
+            <div class="row">
+                {% for f_p in featured_products %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="featured-products-item">
+                            <div class="products-image">
+                                <a href="{{ f_p.get_absolute_url }}"><img src="{{ f_p.img.url }}" alt="image"
+                                                                          height="550" width="550"></a>
+
+                                <ul class="products-action">
+                                    <form action="{% url 'cart_add' f_p.id %}" method="post" id="feature-{{ f_p.id }}">
+                                        {% csrf_token %}
+                                    </form>
+                                    <li>
+                                        <a href="#"
+                                           onclick="document.getElementById('feature-{{ f_p.id }}').submit(); return false;"
+                                           data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                class="flaticon-shopping-cart"></i></a>
+                                    </li>
+
+                                </ul>
+
+                                <div class="new">
+                                    <span>{% trans 'New' %}</span>
+                                </div>
+                            </div>
+
+                            <div class="products-content">
+                                <h3>
+                                    <a href="{ f_p.get_absolute_url }}">{{ f_p.title }}</a>
+                                </h3>
+                                <div class="price">
+                                    <span class="new-price">${{ f_p.new_price }}</span>
+                                    <span class="old-price">${{ f_p.old_price }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="top-products-area pt-100 pb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Best Sellers Products' %}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua quis ipsum suspendisse</p>
+            </div>
+
+            <div class="top-products-slider owl-carousel owl-theme">
+                {% for b_s_p in best_seller_products %}
+                    <div class="top-products-item">
+                        <div class="products-image">
+                            <a href="{{ b_s_p.get_absolute_url }}"><img src="{{ b_s_p.img.url }}" alt="image"
+                                                                        height="650" width="650"></a>
+
+                            <ul class="products-action">
+                                <form action="{% url 'cart_add' b_s_p.id %}" method="post" id="best-{{ b_s_p.id }}">
+                                    {% csrf_token %}
+                                </form>
+                                <li>
+                                    <a href="#"
+                                       onclick="document.getElementById('best-{{ b_s_p.id }}').submit(); return false;"
+                                       data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                            class="flaticon-shopping-cart"></i></a>
+                                </li>
+
+                            </ul>
+
+                            <div class="sale">
+                                <span>{% trans 'Sale' %}</span>
+                            </div>
+                        </div>
+
+                        <div class="products-content">
+                            <h3>
+                                <a href="{{ b_s_p.get_absolute_url }}">{{ b_s_p.title }}</a>
+                            </h3>
+                            <div class="price">
+                                <span class="new-price">${{ b_s_p.new_price }}</span>
+                                <span class="old-price">${{ b_s_p.old_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>{% trans 'Latest Blog' %}</h2>
+            </div>
+
+            <div class="row">
+                {% for l_blog in latest_blog %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-item">
+                            <div class="image">
+                                <a href="{% url 'post' l_blog.id %}"><img src="{{ l_blog.img.url }}" alt="image"></a>
+
+                                <div class="date">
+                                    <span>{{ l_blog.posted }}</span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="{% url 'post' l_blog.id %}">{{ l_blog.title }}</a>
+                                </h3>
+                                <a href="{% url 'post' l_blog.id %}" class="blog-btn">{% trans 'Read More +' %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="newsletter-area ptb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="newsletter-content">
+                        <h2>{% trans 'Subscribe To Our Newsletter' %}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua quis ipsum suspendisse</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <form method="post" action="{% url 'subscribe' %}">
+                        {% csrf_token %}
+                        <input type="email" placeholder="{% trans 'Enter Email Address' %}" name="email" required
+                               autocomplete="off">
+                        <button type="submit">{% trans 'Subscribe Now' %}</button>
+
+                        <div id="validator-newsletter" class="form-result"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
