@@ -1,5 +1,5 @@
-Pybeelog
+Orgo
 ==============
 Ссылка на наш проект: [http://dast4n.pythonanywhere.com/ru/](http://dast4n.pythonanywhere.com/ru/)
-Ccылка на DB: https://sqlspy.io/guest/schemas/uhlizwvsb2c
 
+Это базовый интернет-магазин, созданный с использованием Python и фреймворка Django. Приложение следует архитектурному шаблону MTV (Model-Template-View) и предоставляет функциональность для просмотра товаров, управления корзиной покупок, оформления заказов и администрирования каталога продуктов.
